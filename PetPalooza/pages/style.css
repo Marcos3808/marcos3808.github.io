@@ -1,0 +1,248 @@
+body {
+  font-family: madimiotf;
+  margin: 0;
+  padding: 0;
+  background-color: #F0F4F9;
+}
+
+header {
+  background-color: #0f0061;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+nav ul {
+  list-style: none;
+  justify-content: end;
+}
+nav li {
+  display: inline-block;
+  margin-right: 5px;
+  font-family: madimiotf;
+  font-size: 1em;
+}
+div form{
+  justify-content: end;
+}
+nav a {
+  text-decoration: none;
+}
+#icones-importantes a:hover{
+  background-color: #3333331e;
+  border-radius: 10vh;
+  transition: 200ms
+}
+#logo-completa{
+  font-family: madimiotf;
+  font-size: 4vh;
+}
+#menu-pets{
+  border-radius:2vh;
+}
+#dog{padding-right: 1vh;}
+#cat{padding-right: 1vh;}
+#bird{padding-right: 1vh;}
+#fish{padding-right: 1vh;}
+#outhers{padding-right: 1vh;}
+
+#heart{
+  padding:1vh;
+  padding:1vh;
+}
+#cart{
+  padding:1vh;
+  padding:1vh;
+}
+#user{
+  padding-left:2vh;
+  padding-right:2vh;
+}
+
+#busca{
+  font-family: madimiotf;
+}
+#nav-2{
+  background-color: rgb(255, 255, 255);
+}
+#nav-2 a{
+  font-family: madimiotf;
+  font-size: 1.1em;
+  padding: 2vh;
+  margin: 1vw;
+  border-radius: 2vh;
+  color: rgb(63, 63, 63);
+}
+#nav-2 :hover{
+  scale: 1.03;
+  transition: 200ms;
+  background-color: rgb(255, 255, 255) !important;
+}
+#veterinario{
+  background-color: #d9fcd8 !important;
+}
+#banho{
+  background-color: hsl(61, 100%, 87%) !important;
+}
+#adestramento{
+  background-color: #d7eefc !important;
+}
+#imagem-fundo{
+  background-image: url(../images/1.png);
+  width: 100%;
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-size: cover ;
+}
+#nav-3 a{
+  font-family: madimiotf;
+  font-size: 1em;
+  padding: 1.5vh;
+  margin: 1vw;
+  border-radius: 2vh;
+  background-color: rgb(255, 255, 255);
+  color: rgb(59, 59, 59);
+}
+#promocoes{
+  background-color: #ffb7b7 !important;
+}
+#frete{
+  background-color: #ffd9ae !important;
+}
+#muito-mais{
+  background-color: #f7cfff !important;
+}
+
+.dropdown-item{
+  padding: 1vh;
+  margin-bottom: 1vh;
+}
+.dropdown-item:hover{
+  background-color: #f3f3f3;
+  border-radius: 1vh;
+}
+#carousel-pets{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+#descricao-produto{
+  font-family: never;
+}
+#descricao-produto{
+  margin: -0.5rem !important;
+  height: 11rem;
+}
+#promocao-descricao{
+  font-size: 1em;
+}
+#promo{
+  font-size: 0.75em;
+}
+#preco{
+  font-size: 1.3em;
+}
+#parcela{
+  font-size: 0.6em;
+}
+#botao-comprar{
+  position: relative;
+  top: -5px;
+}
+.card-img-top{
+  height: 12rem;
+}
+main {
+  padding: 20px;
+}
+
+#recomendados{
+  font-family: madimiotf;
+  font-size: 1.5em;
+  padding: 1vw;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 575.98px) {
+  .carousel-inner{
+    display: flex;
+    
+  }
+  .carousel-item{
+    display: block;
+    margin-right: -1vh;
+    flex: 0 0 calc(100%/3);
+  }
+  #card{
+    width: 10rem !important;
+    height: 22.5rem;
+  }
+  #card-3{
+    width: 10rem !important;
+  }
+  .card-img-top{
+    height: 10rem;
+  }
+  .img-wrapper{
+    margin: -1rem;
+  }
+  #descricao-produto{
+    margin: -1rem !important;
+  }
+  #botao-comprar{
+    margin: 0.5rem;
+    position: relative;
+    top: -2vh;
+  }
+  #nav-2 a{
+    font-family: madimiotf;
+    font-size: 1em;
+    padding: 2vh;
+    margin: 1vw;
+    border-radius: 2vh;
+    color: rgb(63, 63, 63);
+  }
+}
+@media screen and (min-width:575px) {
+  .carousel-inner{
+    display: flex;
+  }
+  .carousel-item{
+    display: block;
+    margin-right: 0;
+    flex: 0 0 calc(100%/10);
+  }
+}
+.carousel-inner{
+  display: flex;
+  padding-left: 1.5vw;
+}
+.card{
+  margin: 0 .5em;
+}
+.carousel-control-prev, .carousel-control-next{
+  background-color: rgba(0, 0, 0, 0.534);
+  height: 8vh;
+  width: 5vh;
+  border-radius: 1.5vh;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1vh;
+}
+.img-wrapper{
+  padding: 2em;
+}
+
+@font-face {
+  font-family: madimiotf;
+  src: url(../fontes/madimi/otf/MadimiOne-Regular.otf);
+}
+@font-face {
+  font-family: never;
+  src: url(../fontes/NeverMindRounded/NeverMindRounded-DemiBold.ttf);
+}

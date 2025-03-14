@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetPalooza: O Maior PetShop do Brasil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="../images/logo22.png">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary ">
+    <div class="container-fluid">
+      <a class="navbar-brand p-0" href="../index.html" id="logo-completa"><img src="../images/logo.png" height="50" width="50"
+          class="img-fluid">et Palooza</a>
+      <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="navbar-toggler-icon"></i></span>
+      </a>
+
+      <div class="container-fluid">
+        <div class="">
+          <form class="d-flex" id="busca">
+            <input class="form-control me-6 m-1 fs-6 opacity-75 rounded-4" type="search"
+              placeholder="Do que seu pet precisa? " aria-label="Search">
+          </form>
+        </div>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav navbar-collapse" id="icones-importantes">
+          <li class="nav-item">
+            <a class="nav-link" href="../register/register.html" id="heart">
+              <img src="../images/navbar/heart.png" alt="">
+              <small class="d-lg-none ms-2">Favoritos</small>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../register/register.html" id="cart">
+              <img src="../images/navbar/cart.png" alt="">
+              <small class="d-lg-none ms-2">Carrinho</small>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../register/register.html" id="user">
+              <img src="../images/navbar/user.png">
+              <small class="d-lg-none ms-2">Entrar ou Registrar-se</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="text-start" id="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <span class="container-fluid fs-1 lh-lg" id="cachorro">Cachorro</span>
+          <div class="d-flex flex-row-reverse justify-content-start justify-content-md-start">
+            <form class="ml-3 d-inline-block">
+              <select class="form-select form-select-sm">
+                <option>Ordenar por nome</option>
+                <option>Ordenar pelo menor preço</option>
+                <option>Ordenar pelo maior preco</option>
+              </select>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <main class="container-fluid ">
+        <div class="row" id="danger-class">
+          <div class="col-lg-3" id="info-class">
+            <nav class="navbar navbar-expand-lg  ">
+              <div class="container-fluid text-decoration-none">
+                <a class="navbar-toggler bg-body-tertiary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="fs-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                    </svg>Filtrar
+                  </span>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <nav id="" class="flex-column align-items-stretch">
+                    <nav class="nav nav-pills flex-column" id="filtro"><br>
+
+                      <a class="text-black text-center text-lg-start text-md-center">Filtrar Produtos</a>
+                      <hr>
+                      <nav class="nav nav-pills flex-column text-center text-lg-start text-md-center">
+                        <a class="text-black-50" href="#"><i class="bi bi-trash"></i> Limpar Filtros</a><br><br>
+                      </nav>
+
+                      <a class="text-center text-black ">Categorias</a>
+                      <hr>
+                      <nav class="nav nav-pills flex-column lh-lg text-center text-lg-start text-md-center" id="categoria">
+                        <a href="#">1. Rações</a>
+                        <a href="#">2. Petiscos e Ossos</a>
+                        <a href="#">3. Tapetes</a>
+                        <a href="#">5. Brinquedos</a>
+                        <a href="#">6. Farmacia</a><br><br>
+                      </nav>
+
+                      <a class="text-center text-black">Faixa de Preço</a>
+                      <hr>
+                      <nav class="nav nav-pills flex-column">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckPreco1">
+                          <label class="form-check-label" for="flexCheckPreco1">
+                            1
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckPreco2">
+                          <label class="form-check-label" for="flexCheckPreco2">
+                            2
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckPreco3">
+                          <label class="form-check-label" for="flexCheckPreco3">
+                            3
+                          </label>
+                        </div>
+                      </nav><br><br>
+
+                      <a class="text-center text-black">Marcas</a>
+                      <hr>
+                      <nav class="nav nav-pills flex-column">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckMarca1">
+                          <label class="form-check-label" for="flexCheckMarca1">
+                            Golden
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckMarca2">
+                          <label class="form-check-label" for="flexCheckMarca2">
+                            Premium
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckMarca3">
+                          <label class="form-check-label" for="flexCheckMarca3">
+                            Fusca
+                          </label>
+                        </div>
+                      </nav><br><br>
+
+                      <a class="text-center text-black">Porte da Raça</a>
+                      <hr>
+                      <nav class="nav nav-pills flex-column">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckRaca1">
+                          <label class="form-check-label" for="flexCheckRaca1">
+                            Pequeno
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckRaca2">
+                          <label class="form-check-label" for="flexCheckRaca2">
+                            Medio
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckRaca3">
+                          <label class="form-check-label" for="flexCheckRaca3">
+                            Grande
+                          </label>
+                        </div>
+                      </nav><br><br>
+
+                      <a class="text-center text-black">Idade</a>
+                      <hr>
+                      <nav class="nav nav-pills flex-column">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckIdade1">
+                          <label class="form-check-label" for="flexCheckIdade1">
+                            Novo
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckIdade2">
+                          <label class="form-check-label" for="flexCheckIdade2">
+                            Medio
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckIdade3">
+                          <label class="form-check-label" for="flexCheckIdade3">
+                            Velho
+                          </label>
+                        </div><br><br>
+                      </nav>
+                    </nav>
+                  </nav>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <div class="col-lg-9 container-fluid" id="primary-class">
+            <div class="row justify-content-evenly" id="black-class">
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog8.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span></p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog13.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog1.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog9.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog9.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+               <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog5.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog8.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog8.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog8.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+               <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog8.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog8.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="card" style="width: 15rem;" id="card">
+                <a href="../pet-food/product.html" class="col text-decoration-none text-black">
+                  <div class="img-wrapper">
+                    <img src="../images/produtos/racaodog8.png" class="card-img-top">
+                  </div>
+                  <div class="card-body" id="descricao-produto">
+                    <h6 class="card-title">Ração Golden Special para Cães Adultos Sabor Frango e Carne</h6>
+                    <span class="text-decoration-line-through text-danger lh-1" id="promo">R$149,99</span>
+                    <p class="" id="preco">R$ 134,99 <span id="parcela">3x de R$62,66</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+
+
+    </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <hr class="mb-4">
+    <div class="container text-center text-md-left">
+      <div class="row text-center text-md-left">
+
+        <div class="col mx-auto mt-3">
+          <h5 class="mb-4 font-weight text-warning">
+            <a class="navbar-brand p-0" href="#" id="logo-completa"><img src="../images/logo2.png" height="50" width="50" class="img-fluid">et Palooza</a></h5>
+            <p>Petpalooza é um paraíso para os amantes de animais. 
+              Nossa loja oferece uma variedade de produtos e serviços para cães, gatos, pássaros e outros bichinhos. 
+              Desde ração premium até brinquedos divertidos. Venha nos visitar e deixe seu pet se sentir em casa!</p>
+        </div>
+
+
+        <div class="col-md-4 col-lg-4 col-lx-4 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight text-warning">Contatos</h5>
+          <p>
+            <i class="bi bi-house-fill mx-2 fs-5"></i>Rua José Benício, Centro - Caxias MA
+          </p>
+          <p>
+            <i class="bi bi-envelope-fill mx-2 fs-5"></i>petpaloozacontato@gmail.com
+          </p>
+          <p>
+            <i class="bi bi-telephone-fill mx-2 fs-5"></i>(99) 9999-9999
+          </p>
+        </div>
+        
+      </div>
+
+      <hr class="mb-4">
+
+      <div class="row align-items-center">
+        <div class="col-md-7 col-lg-8">
+          <p>&copy; 2024 Pet Palooza. Todos os direitos reservados.
+            <br>Icons<a href="https://icons.getbootstrap.com/" title="smile icons"> https://icons.getbootstrap.com/</a>
+          </p>
+        </div>
+
+        <div class="col-md-5 col-lg-4">
+          <div class="text-center text-md-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white fs-3"><i class="bi bi-twitter-x mx-2"></i></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white fs-3"><i class="bi bi-instagram mx-2"></i></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white fs-3"><i class="bi bi-facebook mx-2"></i></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white fs-3"><i class="bi bi-whatsapp mx-2"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
