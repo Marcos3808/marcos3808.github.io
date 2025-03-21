@@ -1,0 +1,140 @@
+body {
+  font-family: never2;
+  margin: 0;
+  padding: 0;
+  background-color: #F0F4F9
+}
+
+header {
+  background-color: #0f0061;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  justify-content: end;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 5px;
+  font-family: madimiotf;
+  font-size: 3vh;
+}
+div form{
+  justify-content: end;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+#logo-completa{
+  font-family: madimiotf;
+  position: relative;
+  top: 2vh;
+  font-size: 4vh;
+}
+#criar-conta{
+  position: relative;
+  top: 3vh;
+}
+.form-check{
+  position: relative;
+  right: 2vh;
+  margin: 3vh;
+}
+#voltar{
+  color: #818181;
+  position: relative;
+  top:2vh;
+}
+#logar{
+  color: #818181;
+  position: relative;
+  top:2vh;
+}
+main{
+  padding-bottom: 5vh;
+  background-color: rgb(250, 250, 250);
+  border-radius: 3vh;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#validationCustom01{
+  height: 7vh;
+}
+#validationCustom02{
+  height: 7vh;
+}
+#validationCustom03{
+  height: 7vh;
+}
+#validationCustom04{
+  height: 7vh;
+}
+#validationCustom05{
+  height: 7vh;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (min-width:376px) {
+  .carousel-inner{
+    display: flex;
+  }
+  .carousel-item{
+    display: block;
+    margin-right: 0;
+    flex: 0 0 calc(100%/7);
+  }
+  
+}
+
+.carousel-inner{
+  display: flex;
+  padding-left: 1.5vw;
+}
+
+.card{
+  margin: 0 .5em;
+}
+
+.carousel-control-prev, .carousel-control-next{
+  background-color: rgba(0, 0, 0, 0.534);
+  height: 8vh;
+  width: 5vh;
+  border-radius: 1.5vh;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1vh;
+}
+.img-wrapper{
+  padding: 2em;
+}
+
+@font-face {
+  font-family: madimiotf;
+  src: url(../fontes/madimi/otf/MadimiOne-Regular.otf);
+}
+@font-face {
+  font-family: never;
+  src: url(../fontes/NeverMindRounded/NeverMindRounded-DemiBold.ttf);
+}
+@font-face {
+  font-family: never2;
+  src: url(../fontes/NeverMindRounded/NeverMindRounded-Medium.ttf);
+}
+@font-face {
+  font-family: sans;
+  src: url(../fontes/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+@font-face {
+  font-family: simply;
+  src: url(../fontes/simply_rounded/Simply\ Rounded.pdf);
+}

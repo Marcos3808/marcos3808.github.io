@@ -1,0 +1,275 @@
+body {
+  font-family: madimiotf;
+  margin: 0;
+  padding: 0;
+  background-color: #F0F4F9;
+}
+
+header {
+  background-color: #0f0061;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+nav ul {
+  list-style: none;
+  justify-content: end;
+}
+nav li {
+  display: inline-block;
+  margin-right: 5px;
+  font-family: madimiotf;
+  font-size: 1em;
+}
+div form{
+  justify-content: end;
+}
+nav a {
+  text-decoration: none;
+}
+#icones-importantes a:hover{
+  background-color: #3333331e;
+  border-radius: 10vh;
+  transition: 200ms
+}
+#logo-completa{
+  font-family: madimiotf;
+  font-size: 4vh;
+  padding-right: 5vh !important;
+}
+#menu-pets{
+  border-radius:2vh;
+}
+#dog{padding-right: 1vh;}
+#cat{padding-right: 1vh;}
+#bird{padding-right: 1vh;}
+#fish{padding-right: 1vh;}
+#outhers{padding-right: 1vh;}
+
+#heart{
+  padding:1vh;
+  padding:1vh;
+}
+#cart{
+  padding:1vh;
+  padding:1vh;
+}
+#user{
+  padding-left:2vh;
+  padding-right:2vh;
+}
+#busca{
+  font-family: madimiotf;
+  height: 3.2em;
+}
+#nav-2{
+  background-color: rgb(255, 255, 255);
+}
+#nav-2 a{
+  font-family: madimiotf;
+  font-size: 1.1em;
+  padding: 1.5vh;
+  margin: 1vw;
+  border-radius: 2vh;
+  color: rgb(0, 0, 0);
+}
+#nav-2 :hover{
+  scale: 1.03;
+  transition: 200ms;
+  background-color: rgb(255, 255, 255) !important;
+}
+#veterinario{
+  background-color: #ff8274 !important;
+}
+#veterinario :hover{
+  scale: none !important;
+}
+#banho{
+  background-color: #ffb473 !important;
+}
+#banho :hover{
+  scale: none !important;
+}
+#adestramento{
+  background-color: #fff870 !important;
+}
+#adestramento :hover{
+  scale: none !important;
+}
+#nav-3 a{
+  font-family: madimiotf;
+  font-size: 1em;
+  padding: 1.5vh;
+  margin: 1vw;
+  border-radius: 2vh;
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
+#promocoes{
+  background-color: #ff0000 !important;
+}
+#frete{
+  background-color: #ff7b00 !important;
+}
+#muito-mais{
+  background-color: #0b56c7 !important;
+}
+
+.dropdown-item{
+  padding: 1vh;
+  margin-bottom: 1vh;
+}
+.dropdown-item:hover{
+  background-color: #f3f3f3;
+  border-radius: 1vh;
+}
+#carousel-pets{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.modal-body {
+  font-family: simply;
+}
+.modal-title{
+  font-family: never;
+}
+#descricao-produto{
+  font-family: simply;
+  margin: -1rem !important;
+  height: 11rem;
+}
+#promocao-descricao{
+  font-size: 1em;
+}
+#promo{
+  font-size: 1em;
+}
+#desconto{
+  font-size: 0.8em;
+}
+#preco{
+  font-size: 1.3em;
+}
+#parcela{
+  font-size: 0.6em;
+}
+.card-img-top{
+  height: 14rem;
+}
+main {
+  padding: 20px;
+}
+#recomendados{
+  font-family: madimiotf;
+  font-size: 1.5em;
+  padding: 1vw;
+}
+.carousel-item :hover{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  scale: 1.005;
+}
+#card :hover{
+  box-shadow: unset !important;
+  scale: none;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 575.98px) {
+  .carousel-inner{
+    display: flex;
+  }
+  .carousel-item{
+    display: block;
+    margin-right: -1vh;
+    flex: 0 0 calc(100%/3);
+  }
+  #busca{
+    height: 7vh;
+  }
+  #card{
+    width: 10rem !important;
+    height: 19rem;
+  }
+  #card-3{
+    width: 7rem !important;
+    height: 7rem !important;
+    margin: 5vh;
+  }
+  .card-img-top{
+    height: 12rem;
+    padding: 2vh;
+  }
+  .img-wrapper{
+    margin: -1rem;
+  }
+  #descricao-produto{
+    margin: -1rem !important;
+  }
+  #desconto{
+    font-size: 1.5vh;
+    position: relative;
+    top: -0.1vh;
+  }
+  #promo{
+    font-size: 1.5vh;
+  }
+
+}
+@media screen and (min-width:575px) {
+  .carousel-inner{
+    display: flex;
+    padding: 3vh;
+  }
+  .carousel-item{
+    display: block;
+    margin-right: 0;
+    flex: 0 0 calc(100%/10);
+  }
+  #card-3{
+    width: 7rem !important;
+    height: 7rem !important;
+    margin: 5vh;
+    border-radius: 3vh;
+  }
+  #desconto{
+    font-size: 0.8em;
+    position: relative;
+    top: -5px;
+  }
+}
+
+.carousel-inner{
+  display: flex;
+  padding-left: 1.5vw;
+}
+.card{
+  margin: 0 .6em;
+}
+.carousel-control-prev, .carousel-control-next{
+  background-color: rgba(0, 0, 0, 0.534);
+  height: 8vh;
+  width: 5vh;
+  border-radius: 1.5vh;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1vh;
+}
+
+@font-face {
+  font-family: simply;
+  src: url(./fontes/NeverMindRounded/NeverMindRounded-Medium.ttf);
+}
+@font-face {
+  font-family: madimiotf;
+  src: url(./fontes/madimi/otf/MadimiOne-Regular.otf);
+}
+@font-face {
+  font-family: never;
+  src: url(./fontes/NeverMindRounded/NeverMindRounded-DemiBold.ttf);
+}
