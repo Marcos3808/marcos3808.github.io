@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- A viewport garante que o layout se adapte a telas menores -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Privacidade Digital</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #4ca1af);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+      padding: 10px;
+    }
+    #quiz-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 600px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .progress {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #555;
+    }
+    .question {
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .option {
+      margin: 10px 0;
+      font-size: 1.1em;
+      /* Espaçamento maior para facilitar o toque */
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .option input {
+      margin-right: 10px;
+      transform: scale(1.3);
+      vertical-align: middle;
+    }
+    .option label {
+      vertical-align: middle;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2em;
+      margin: 30px auto 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007acc;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #005b99;
+    }
+    
+    /* Ajustes para dispositivos menores */
+    @media (max-width: 600px) {
+      #quiz-container {
+        padding: 20px;
+      }
+      .question {
+        font-size: 1.2em;
+      }
+      .option {
+        font-size: 1.1em;
+      }
+      button {
+        font-size: 1.2em;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="quiz-container">
+    <h1>Quiz de Privacidade Digital</h1>
+    <div class="progress" id="progress">Pergunta 1 de 7</div>
+    <div id="question" class="question">Pergunta aparecerá aqui...</div>
+    <div id="options"></div>
+    <button id="nextBtn">Próxima</button>
+  </div>
+
+  <script>
+    // Dados do quiz com 7 perguntas
+    const quizData = [
+      { 
+        question: "Você utiliza autenticação de dois fatores em suas contas?", 
+        options: ["Sempre", "Às vezes", "Nunca"], 
+        scores: [0, 1, 2] 
+      },
+      { 
+        question: "Você revisa as configurações de privacidade das suas redes sociais regularmente?", 
+        options: ["Sempre", "Às vezes", "Nunca"], 
+        scores: [0, 1, 2] 
+      },
+      { 
+        question: "Você compartilha informações pessoais, como localização e data de nascimento, publicamente?", 
+        options: ["Raramente", "Às vezes", "Frequentemente"], 
+        scores: [0, 1, 2] 
+      },
+      { 
+        question: "Você costuma ler os termos de uso e políticas de privacidade antes de se cadastrar em novos serviços online?", 
+        options: ["Sempre", "Às vezes", "Nunca"], 
+        scores: [0, 1, 2] 
+      },
+      { 
+        question: "Você utiliza senhas únicas e complexas para suas contas?", 
+        options: ["Sempre", "Às vezes", "Nunca"], 
+        scores: [0, 1, 2] 
+      },
+      { 
+        question: "Você é cuidadoso com o que publica nas redes sociais, evitando divulgar informações sensíveis?", 
+        options: ["Sempre", "Às vezes", "Nunca"], 
+        scores: [0, 1, 2] 
+      },
+      { 
+        question: "Você revisa regularmente os aplicativos autorizados a acessar seus dados pessoais?", 
+        options: ["Sempre", "Às vezes", "Nunca"], 
+        scores: [0, 1, 2] 
+      }
+    ];
+
+    let currentQuestion = 0;
+    let totalScore = 0;
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressEl = document.getElementById("progress");
+
+    // Carrega a pergunta e atualiza a barra de progresso
+    function loadQuestion() {
+      optionsEl.innerHTML = "";  // Limpa opções anteriores
+      const currentData = quizData[currentQuestion];
+      questionEl.innerText = currentData.question;
+      progressEl.innerText = `Pergunta ${currentQuestion + 1} de ${quizData.length}`;
+
+      currentData.options.forEach((option, index) => {
+        const div = document.createElement("div");
+        div.className = "option";
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "option";
+        radio.value = currentData.scores[index];
+        radio.id = "option" + index;
+
+        const label = document.createElement("label");
+        label.htmlFor = "option" + index;
+        label.innerText = option;
+
+        div.appendChild(radio);
+        div.appendChild(label);
+        optionsEl.appendChild(div);
+      });
+    }
+
+    // Ao clicar no botão "Próxima", captura a resposta e atualiza o quiz
+    nextBtn.addEventListener("click", () => {
+      const selected = document.querySelector("input[name='option']:checked");
+      if (!selected) {
+        alert("Por favor, selecione uma opção");
+        return;
+      }
+      totalScore += parseInt(selected.value);
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        let feedback;
+        if (totalScore === 0) {
+          feedback = "Parabéns! Sua privacidade digital está extremamente protegida.";
+        } else if (totalScore <= 7) {
+          feedback = "Bom, mas sempre há espaço para melhorias. Considere revisar suas configurações de segurança.";
+        } else {
+          feedback = "Atenção! Há práticas que podem comprometer sua privacidade. Reveja suas configurações e adote medidas de proteção.";
+        }
+        document.getElementById("quiz-container").innerHTML =
+          `<h2>Seu Nível de Privacidade: ${totalScore}</h2>
+           <p style="font-size: 1.1em; margin-top: 20px;">${feedback}</p>`;
+      }
+    });
+
+    // Inicializa o quiz
+    loadQuestion();
+  </script>
+</body>
+</html>
