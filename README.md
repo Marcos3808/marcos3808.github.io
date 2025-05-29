@@ -1,4 +1,4 @@
-# Instruções para Usar o Pytest no Visual Studio Code (Para Iniciantes Absolutos)
+# Projeto integrador
 
 Este guia explica passo a passo como usar o Pytest para executar testes no Visual Studio Code, mesmo se você nunca usou testes antes.
 
