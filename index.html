@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golpes em Redes Sociais</title>
+  <link rel="icon" type="image/png" href="./assets/icons/icon2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-image: url("assets/images/imageHD.jpg");
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+    }
+
+    #menu-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 40px;
+      width: 500px;
+      max-width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+      animation: slideIn 1s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes fadeInMenu {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #menu-container h1 {
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      font-size: 1.5em;
+      color: #ffffff;
+    }
+
+    .menu-icons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0px;
+    }
+
+    .menu-item {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .menu-item span {
+      display: block;
+      margin-top: 10px;
+      font-size: 1em;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    #scenario-container {
+      display: none;
+      background: linear-gradient(rgba(0, 0, 0, 0.2));
+      backdrop-filter: blur(12px);
+      padding: 40px;
+      border-radius: 30px;
+      width: 1200px;
+      max-width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: slideIn 1s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: background 0.5s ease;
+    }
+
+    @keyframes fadeInScenario {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #scenario-description p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    #image-container img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    #options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .option {
+      flex: 1 1 30%;
+      padding: 15px;
+      font-size: 1em;
+      border: none;
+      border-radius: 15px;
+      background-color: #ffffffa9;
+      color: #000000;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .option:hover {
+      background-color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .option:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #restartBtn {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      background-color: #0166aa;
+      color: #fff;
+    }
+
+    #restartBtn:hover {
+      background-color: #005b99;
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      #menu-container{
+        padding: 20px;
+        max-width: 62%;
+      }
+      #scenario-container {
+        padding: 20px;
+        max-width: 100%;
+      }
+
+      #menu-container h1 {
+        font-size: 1.7em;
+      }
+
+      .menu-icons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      }
+
+      .menu-item img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .menu-item span {
+        font-size: 1em;
+      }
+
+      .option {
+        flex: 1 1 100%;
+        font-size: 0.8em;
+        background-color: #ffffff91;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .option:hover {
+        background-color: #ffffff91;
+        transform: translateY(0px);
+      }
+
+      .option:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      #scenario-description p {
+        font-size: 0.9em;
+      }
+
+      #restartBtn {
+        font-size: 1em;
+      }
+    }    
+  </style>
+</head>
+
+<body>
+  <div id="menu-container">
+    <h1></i>Selecionar</h1>
+    <div class="menu-icons">
+      <div class="menu-item" onclick="menuItemClick('story1')" aria-label="Iniciar cenário de golpe por email">
+        <img src="assets/icons/whatsapp.png" alt="Golpe do Email">
+        <span>Whatsapp</span>
+      </div>
+      <div class="menu-item" onclick="menuItemClick('story2')" aria-label="Iniciar cenário de golpe por Instagram">
+        <img src="assets/icons/instagram.png" alt="Golpe pelo Instagram">
+        <span>Instagram</span>
+      </div>
+      <div class="menu-item" onclick="menuItemClick('story3')" aria-label="Iniciar cenário de golpe por TikTok">
+        <img src="assets/icons/tiktok.png" alt="Golpe por TikTok">
+        <span>TikTok</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="scenario-container" style="display: none;">
+    <div id="scenario-description"></div>
+    <div id="image-container"></div>
+    <div id="options"></div>
+    <button id="restartBtn" style="display: none;" onclick="restartGame()" aria-label="Recomeçar o jogo">
+      <i class="fas fa-redo"></i> Recomeçar
+    </button>
+  </div>
+
+  <script>
+    let menuClickSound, clickSound, clickSoundRestart;
+    try {
+      menuClickSound = new Howl({
+        src: ['assets/sounds/som7.mp3'],
+        volume: 0.3,
+        preload: true,
+        onloaderror: () => console.warn('Erro')
+      });
+      clickSound = new Howl({
+        src: ['assets/sounds/som3.mp3'],
+        volume: 0.3,
+        preload: true,
+        onloaderror: () => console.warn('Erro')
+      });
+        clickSoundRestart = new Howl({
+        src: ['assets/sounds/som4.mp3'],
+        volume: 0.3,
+        preload: true,
+        onloaderror: () => console.warn('Erro')
+      });
+    } catch (e) {
+      console.warn('Erro', e);
+    }
+
+    let currentStoryParts = {};
+    let currentPart = "";
+    let cumulativeScore = 0;
+
+    const emailStoryParts = {
+      "start": {
+        text: "Você recebe uma mensagem no WhatsApp de um número desconhecido. A mensagem menciona seu email e oferece uma bolsa de estudos exclusiva para cursos da área de tecnologia, com um link para confirmar sua inscrição. Qual é sua ação?",
+        image: "assets/images/imagem_golpe.jpg",
+        options: [
+          { id: "ignoreBoth", text: "Ignorar a mensagem do WhatsApp", next: "ignore1", points: 1 },
+          { id: "clickWhatsAppLink", text: "Clicar no link do WhatsApp", next: "click1", points: 0 },
+          { id: "verifyEmail", text: "Verificar caixa de entrada no Gmail", next: "verify1", points: 2 }
+        ]
+      },
+      "ignore1": {
+        text: "Você optou por ignorar a mensagem, mas horas depois recebe uma notificação do Gmail alertando sobre uma tentativa de login na sua conta. A notificação parece legítima, com o logotipo do Gmail e detalhes técnicos. O que você faz?",
+        image: "assets/images/imagem_notificacao.jpg",
+        options: [
+          { id: "continueIgnoring", text: "Continuar ignorando", next: "endIgnore", points: 0 },
+          { id: "checkNotif", text: "Verificar a notificação", next: "ignore2", points: 1 },
+          { id: "markPhishing", text: "Fechar a notificação", next: "ignore_report", points: 2 }
+        ]
+      },
+      "ignore_report": {
+        text: "Você fecha a notificação, mas novas mensagens continuam chegando, agora com avisos urgentes de 'atividade suspeita' e um link para 'recuperar sua conta'. As mensagens parecem vir do suporte oficial do Gmail. Sua escolha é:",
+        image: "assets/images/imagem_notificacao2.jpg",
+        options: [
+          { id: "checkNotif", text: "Verificar historico de acesso", next: "ignore2", points: 1 },
+          { id: "researchOnline", text: "Pesquisar informações online", next: "ignore_support", points: 1 },
+          { id: "doNothing", text: "Não agir", next: "endIgnore", points: 0 }
+        ]
+      },
+      "ignore2": {
+        text: "Ao verificar a notificação, você encontra uma série de emails na sua caixa de entrada, todos com o assunto 'Alerta de Segurança' e remetentes que parecem ser do Google. Eles alertam o perigo e pedem para clicar em um link para 'proteger sua conta'. Você decide:",
+        image: "assets/images/imagem_spam.jpg",
+        options: [
+          { id: "changePassword", text: "Alterar sua senha", next: "ignore3", points: 2 },
+          { id: "seekHelp", text: "Buscar ajuda online", next: "ignore_support", points: 1 },
+          { id: "doNothing", text: "Ignorar os alertas", next: "endIgnore2", points: 0 }
+        ]
+      },
+      "ignore3": {
+        text: "Você altera sua senha com sucesso, e as notificações param temporariamente. No entanto, um amigo menciona que recebeu um email estranho do seu endereço, sugerindo que sua conta pode ainda estar comprometida. Para aumentar a segurança, você:",
+        image: "assets/images/imagem_ativar.jpg",
+        options: [
+          { id: "enable2FA", text: "Ativar autenticação de dois fatores", next: "ignore4", points: 2 },
+          { id: "monitorActivity", text: "Apenas monitora a atividade", next: "endMonitor", points: 1 },
+          { id: "relax", text: "Confiar que já está protegido", next: "endRelax", points: 0 }
+        ]
+      },
+      "ignore4": {
+        text: "Com a autenticação de dois fatores ativa, você recebe um código por SMS sempre que há uma tentativa de login. Para garantir a segurança dos seus dados, você decide:",
+        image: "assets/images/imagem_senhaaf2.jpg",
+        options: [
+          { id: "backupData", text: "Realizar backup dos seus dados", next: "endBetterIgnore", points: 2 },
+          { id: "consultExpert", text: "Buscar dicas na internet", next: "ignore_expert", points: 2 },
+          { id: "doNothing", text: "Confiar somente no 2FA", next: "endModerateIgnore", points: 1 }
+        ]
+      },
+      "ignore_expert": {
+        text: "Após pesquisar online, você confirma que o email pedindo para desativar o 2FA era um golpe. Suas ações, incluindo a ativação do 2FA, protegeram sua conta. Continue atualizando suas práticas de segurança e verificando fontes confiáveis para evitar futuros golpes.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "ignore_support": {
+        text: "Você pesquisa online e descobre que os emails eram tentativas de phishing sofisticadas, imitando o Google. Seguindo dicas de fóruns confiáveis, você reforça a segurança da sua conta, mas precisa manter a vigilância contra futuras ameaças.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "endIgnore": {
+        text: "Ignorar as notificações permitiu que os invasores acessassem sua conta, enviando emails fraudulentos para seus contatos. Sempre investigue alertas de segurança, mesmo que pareçam incômodos, para proteger seus dados.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "endIgnore2": {
+        text: "Ignorar os alertas de email resultou na invasão da sua conta. Os golpistas usaram seu email para enviar mensagens falsas aos seus contatos. Verifique sempre notificações suspeitas para evitar comprometer sua segurança.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "endMonitor": {
+        text: "Monitorar a atividade da conta ajudou a identificar tentativas de login, mas sem autenticação de dois fatores, sua conta permaneceu vulnerável. Ative o 2FA para maior proteção contra futuras invasões.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "endRelax": {
+        text: "Confiar apenas na troca de senha não foi suficiente. Sem autenticação de dois fatores, sua conta continuou vulnerável, e você recebe novos alertas de tentativas de login. Habilite o 2FA para maior segurança.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "endBetterIgnore": {
+        text: "Parabéns! Fazer backup dos seus dados e manter o 2FA ativo protegeu sua conta contra tentativas de invasão. Continue atualizando seus backups e práticas de segurança para permanecer seguro.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "endModerateIgnore": {
+        text: "Confiar apenas no 2FA protegeu sua conta, mas sem backups ou verificações adicionais, você está vulnerável a perdas futuras. Adote práticas como backups regulares para maior segurança.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "click1": {
+        text: "Clicar no link do WhatsApp levou você a uma página que parecia idêntica ao site da instituição, mas seus dados foram roubados. Sempre verifique a autenticidade de links antes de clicar, especialmente em mensagens inesperadas.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "verify1": {
+        text: "Ao verificar a notificação, você encontra uma série de emails na sua caixa de entrada, todos com o assunto 'Alerta de Segurança' e remetentes que parecem ser do Google. Eles alertam o perigo e pedem para clicar em um link para 'proteger sua conta'. Qual é o seu próximo passo?",
+        image: "assets/images/imagem_spam.jpg",
+        options: [
+          { id: "analyzeLinks", text: "Analisar todos com cuidado", next: "verify2", points: 2 },
+          { id: "contactBank", text: "Excluir a conta", next: "endVerifyFreezeGood", points: 1 },
+          { id: "deleteEmail", text: "Excluir todos os emails", next: "endVerifyDelete", points: 0 }
+        ]
+      },
+      "verify2": {
+        text: "Ao analisar os emails, você nota que os links levam a domínios suspeitos, e contêm erros sutis de formatação. Um dos emails pede informações pessoais para 'confirmar a bolsa'. Como proceder?",
+        image: "assets/images/imagem_gmail.jpg",
+        options: [
+          { id: "ignoreIssue", text: "Ignorar o problema", next: "endVerifyIgnore", points: 0 },
+          { id: "checkForums", text: "Checar as configurações de segurança da conta", next: "verify2a", points: 2 },
+          { id: "setAlert", text: "Configurar alertas de segurança", next: "verify2b", points: 1 }
+        ]
+      },
+      "verify2a": {
+        text: "Nas configurações de segurança, você vê uma tentativa de login recente de um local desconhecido, mas não foi bem-sucedida. O que fazer?",
+        image: "assets/images/imagem_invasao.jpg",
+        options: [
+          { id: "monitorClosely", text: "Monitorar a situação de perto", next: "endVerifyMonitor", points: 1 },
+          { id: "changePassword", text: "Alterar sua senha e ativar 2FA", next: "endVerifySoftUpdate", points: 2 },
+          { id: "activate2FA", text: "Não fazer nada", next: "endIgnore", points: 0 },
+        ]
+      },
+        "verify2b": {
+        text: "Você configura alertas de segurança e recebe notificações de uma mensagem de alerta do Google informando que uma tentativa de login foi bloqueada. Qual o próximo passo?",
+        image: "assets/images/imagem_invasao.jpg",
+        options: [
+          { id: "seekHelp", text: "Excluir a conta", next: "endVerifyCall", points: 1 },
+          { id: "resetAccount", text: "Verificar a atividade recente e alterar a senha imediatamente", next: "endVerifyReset", points: 2 },
+          { id: "ignoreSigns", text: "Reutilizar uma senha fraca", next: "endVerifyPassword", points: 0 }
+        ]
+      },
+      "endVerifyDelete": {
+        text: "Excluir os emails pareceu resolver o problema, mas sua conta já havia sido comprometida. Os invasores acessaram seus dados pessoais antes que você agisse. Sempre analise mensagens suspeitas com cuidado.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "endVerifyIgnore": {
+        text: "Ignorar os sinais permitiu que os golpistas continuassem tentando acessar sua conta, eventualmente conseguindo. Verifique sempre atividades suspeitas para proteger seus dados.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "endVerifyMonitor": {
+        text: "Monitorar a situação revelou tentativas de login, mas sem ações adicionais como o 2FA, sua conta permaneceu em risco. Ative a autenticação de dois fatores para maior segurança.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "endVerifySoftUpdate": {
+        text: "Alterar sua senha e ativar o 2FA bloqueou as tentativas de invasão, protegendo sua conta. Continue monitorando atividades e mantenha o 2FA ativo para segurança contínua.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "endVerifyPassword": {
+        text: "Após alguns dias, sua conta foi novamente comprometida, e agora você esta recebendo e-mails fraudulentos de novo. Para evitar que isso aconteça, sempre use senhas fortes e únicas para cada conta.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "endVerifyConsult": {
+        text: "Consultar um especialista revelou que os emails eram parte de um golpe sofisticado. Suas ações protegeram sua conta, mas mantenha a vigilância com atualizações regulares de segurança.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "endVerifyRefresh": {
+        text: "Alterar sua senha e manter o 2FA ativo bloqueou todas as tentativas de invasão. Sua conta está segura, mas continue verificando atividades suspeitas regularmente.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "endVerifyBackup": {
+        text: "Fazer backup dos seus dados preservou suas informações, mas sem medidas adicionais como uma nova senha, sua conta ainda está em risco. Reforce sua segurança com o 2FA.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "endVerifyRisk": {
+        text: "Não adotar medidas adicionais após ativar o 2FA deixou sua conta exposta a riscos futuros. Sempre combine várias práticas de segurança para proteção completa.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "endVerifyCall": {
+        text: "Você optou por excluir sua conta para escapar da ameaça. Embora isso tenha impedido novos ataques, você perdeu todos os seus dados, contatos e acessos importantes. No futuro, medidas como a ativação do 2FA poderiam proteger sua conta sem precisar tomar uma decisão tão extrema.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "endVerifyReset": {
+        text: "Ao verificar a atividade recente, você percebe uma tentativa de login suspeita que não foi realizada por você. Agindo rapidamente, altera sua senha para uma combinação forte e única, impedindo que invasores tenham acesso.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "endVerifyFreezeGood": {
+        text: "Excluir sua conta evitou mais danos, mas você perdeu acesso a emails importantes. No futuro, considere analisar mensagens e ativar o 2FA antes de tomar medidas drásticas.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      }
+    };
+
+    const instagramStoryParts = {
+      "start": {
+        text: "Você recebe uma DM, alegando que sua conta violou os termos de uso e que se não fizer nada, será bloqueada em 24 horas. A mensagem, diz que você deve clicar em um link para verificar sua conta. Como você reage?",
+        image: "assets/images/imagem_instagram.jpg",
+        options: [
+          { id: "ignoreMessage", text: "Ignorar a mensagem", next: "i_ignore1", points: 1 },
+          { id: "clickLink", text: "Responder a mensagem", next: "i_click1", points: 0 },
+          { id: "verifyProfile", text: "Verificar o perfil que enviou a mensagem", next: "i_verify1", points: 2 }
+        ]
+      },
+      "i_ignore1": {
+        text: "Você ignora a DM, mas minutos depois recebe uma notificação do Instagram sobre uma tentativa de login de um dispositivo em outra cidade. O que fazer?",
+        image: "assets/images/imagem_emailinstagram.jpg",
+        options: [
+          { id: "checkNotif", text: "Verificar a notificação", next: "i_ignore2", points: 1 },
+          { id: "reportProfile", text: "Reportar o perfil como spam", next: "i_ignore_report", points: 2 },
+          { id: "doNothing", text: "Continuar ignorando", next: "i_endIgnore", points: 0 }
+        ]
+      },
+      "i_ignore_report": {
+        text: "Você reporta o perfil como spam, mas novas notificações chegam, agora com mensagens urgentes dizendo que sua conta será suspensa se você não clicar em um link para 'confirmar sua identidade'. As mensagens têm o logotipo do Instagram. Sua escolha é:",
+        image: "assets/images/imagem_spam.jpg",
+        options: [
+          { id: "checkNotif", text: "Verificar as configurações de segurança", next: "i_ignore2", points: 1 },
+          { id: "researchOnline", text: "Pesquisar sobre golpes no Instagram", next: "i_ignore_support", points: 1 },
+          { id: "doNothing", text: "Não agir", next: "i_endIgnore", points: 0 }
+        ]
+      },
+      "i_ignore2": {
+        text: "Ao verificar as configurações, você descobre algumas tentativas de login mal-sucedidas de locais desconhecidos. Você decide:",
+        image: "assets/images/imagem_instagramlogin.jpg",
+        options: [
+          { id: "changePassword", text: "Alterar sua senha", next: "i_ignore3", points: 2 },
+          { id: "seekHelp", text: "Buscar ajuda online", next: "i_ignore_support", points: 1 },
+          { id: "ignoreAlerts", text: "Ignorar os alertas", next: "i_endIgnore2", points: 0 }
+        ]
+      },
+      "i_ignore3": {
+        text: "Você altera sua senha, O que fazer?",
+        image: "assets/images/imagem_ativar.jpg",
+        options: [
+          { id: "enable2FA", text: "Ativar autenticação de dois fatores", next: "i_ignore4", points: 2 },
+          { id: "backupData", text: "Realizar backup dos seus dados", next: "i_endBetterIgnore", points: 2 },
+          { id: "doNothing", text: "Confiar que está seguro", next: "i_endModerateIgnore", points: 1 }
+        ]
+      },
+      "i_ignore4": {
+        text: "Com o 2FA ativo, você bloqueia uma tentativa de login. Sua conta parece mais segura, mas você recebe um email, aparentemente do Instagram, pedindo para desativar o 2FA para 'atualização de segurança'. O email parece profissional. Sua conta está mais protegida.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "i_ignore_support": {
+        text: "Pesquisando online, você descobre que o perfil era falso e parte de um golpe comum no Instagram. Suas ações iniciais ajudaram, mas você precisa continuar monitorando e adotando práticas de segurança.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "i_endIgnore": {
+        text: "Ignorar as notificações permitiu que os golpistas continuassem tentando acessar sua conta, eventualmente postando conteúdo não autorizado. Sempre verifique notificações de segurança, mesmo que pareçam incômodas.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "i_endIgnore2": {
+        text: "Ignorar os alertas resultou na invasão da sua conta. Os golpistas usaram seu perfil para enviar DMs fraudulentas aos seus seguidores. Verifique sempre atividades suspeitas para proteger sua conta.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "i_endBetterIgnore": {
+        text: "Fazer backup dos seus dados e alterar a senha protegeu sua conta contra o golpe. Continue mantendo backups e o 2FA ativo para garantir segurança a longo prazo.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "i_endModerateIgnore": {
+        text: "Alterar a senha ajudou, mas sem o 2FA, sua conta permanece vulnerável a futuras tentativas de invasão. Ative a autenticação de dois fatores para maior proteção.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "i_click1": {
+        text: "Você responde à mensagem, e o perfil imediatamente pede informações pessoais, como sua senha, para 'verificar sua identidade'. Parece urgente, e o perfil tem muitas curtidas. Qual sua ação?",
+        image: "assets/images/imagem_instagramchat22.jpg",
+        options: [
+          { id: "restartDevice", text: "Reportar a mensagem e bloquear o perfil", next: "i_click3", points: 0 },
+          { id: "installAntivirus", text: "Verificar as configurações de segurança da conta", next: "i_click2", points: 1 },
+          { id: "disconnectNet", text: "Responder novamente zoando o golpe", next: "i_click4", points: 2 }
+        ]
+      },
+      "i_click2": {
+        text: "Ao verificar as configurações de segurança no Instagram, você confirma que há atividades suspeitas e o perfil falso continua enviando mensagens. Mude sua senha e ative a autenticação de dois fatores imediatamente para maior proteção.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "i_click3": {
+        text: "Reportar e bloquear o perfil evitou o golpe. Sua conta permanece segura, mas continue verificando mensagens e perfis suspeitos para evitar futuras ameaças.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "i_click4": {
+        text: "Continuar interagindo com o perfil permitiu que sua conta foi comprometida, e postagens fraudulentas foram feitas. Nunca interaja com mensagens suspeitas pedindo dados pessoais.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "i_verify1": {
+        text: "Ao verificar o perfil, você nota que ele tem apenas 50 seguidores, posts genéricos e um nome de usuário com letras extras (ex.: 'Instagrarn'). Um seguidor seu, porém, interagiu com o perfil. Como proceder?",
+        image: "assets/images/imagem_perfil.jpg",
+        options: [
+          { id: "reportAndBlock", text: "Reportar e bloquear o perfil", next: "i_verify2", points: 2 },
+          { id: "checkSettings", text: "Verificar configurações de segurança da conta", next: "i_verify3", points: 1 },
+          { id: "ignore", text: "Ignorar a mensagem", next: "i_endIgnore", points: 0 }
+        ]
+      },
+      "i_verify2": {
+        text: "Reportar e bloquear o perfil evitou o golpe. Sua conta permanece segura, mas continue verificando perfis e notificações para evitar futuras ameaças.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "i_verify3": {
+        text: "Você reforça as configurações de segurança, mas recebe outra DM de um perfil similar, agora com um link para 'recuperar sua conta'. O perfil parece mais convincente, com muitos seguidores. O que fazer?",
+        image: "assets/images/imagem_ativar.jpg",
+        options: [
+          { id: "enable2FA", text: "Ativar autenticação de dois fatores", next: "i_ignore4", points: 2 },
+          { id: "consultExpert", text: "Consultar dicas online", next: "i_ignore_support", points: 1 },
+          { id: "doNothing", text: "Confiar nas medidas tomadas", next: "i_endModerateIgnore", points: 1 }
+        ]
+      }
+    };
+
+    const tiktokStoryParts = {
+      "start": {
+        text: "Você recebe uma DM no TikTok de um perfil chamado '@ParceriasTikTokOficial', com milhares de seguidores, oferecendo uma parceria para promover um produto popular. A mensagem, em tom profissional, pede que você clique em um link para 'se cadastrar' e menciona seu nome completo. Como você reage?",
+        image: "assets/images/imagem_tiktok.jpg",
+        options: [
+          { id: "ignoreMessage", text: "Ignorar a mensagem", next: "t_ignore1", points: 1 },
+          { id: "clickLink", text: "Clicar no link", next: "t_click1", points: 0 },
+          { id: "verifyProfile", text: "Verificar o perfil que enviou a mensagem", next: "t_verify1", points: 2 }
+        ]
+      },
+      "t_ignore1": {
+        text: "Você ignora a mensagem, mas recebe uma notificação do TikTok sobre uma tentativa de login de um dispositivo desconhecido. A notificação parece oficial, com o logotipo do TikTok, e sugere 'verificar sua conta' imediatamente. O que fazer?",
+        image: "assets/images/imagem_notificacao.jpg",
+        options: [
+          { id: "doNothing", text: "Continuar ignorando", next: "t_endIgnore", points: 0 },
+          { id: "checkNotif", text: "Verificar a notificação", next: "t_ignore2", points: 1 },
+          { id: "reportProfile", text: "Reportar o perfil como spam", next: "t_ignore_report", points: 2 }
+        ]
+      },
+      "t_ignore_report": {
+        text: "Você reporta o perfil como spam, mas novas notificações chegam, agora com mensagens urgentes dizendo que sua conta será banida se você não clicar em um link para 'verificar sua identidade'. As mensagens usam o logotipo do TikTok. Sua escolha é:",
+        image: "assets/images/imagem_spam.jpg",
+        options: [
+          { id: "checkNotif", text: "Verificar as configurações de segurança", next: "t_ignore2", points: 1 },
+          { id: "researchOnline", text: "Pesquisar sobre golpes no TikTok", next: "t_ignore_support", points: 1 },
+          { id: "doNothing", text: "Não agir", next: "t_endIgnore", points: 0 }
+        ]
+      },
+      "t_ignore2": {
+        text: "Ao verificar as configurações, você descobre várias tentativas de login de locais desconhecidos. Um email do TikTok, com remetente 'support@tikt0k.com', pede para clicar em um link para 'proteger sua conta'. Você decide:",
+        image: "assets/images/imagem_instagramlogin.jpg",
+        options: [
+          { id: "changePassword", text: "Alterar sua senha", next: "t_ignore3", points: 2 },
+          { id: "seekHelp", text: "Buscar ajuda online", next: "t_ignore_support", points: 1 },
+          { id: "ignoreAlerts", text: "Ignorar os alertas", next: "t_endIgnore2", points: 0 }
+        ]
+      },
+      "t_ignore3": {
+        text: "Você altera sua senha, mas recebe uma nova DM de outro perfil, agora com um vídeo mencionando você e pedindo para 'completar o cadastro' via link. Um amigo seu segue esse perfil. O que fazer?",
+        image: "assets/images/imagem_ativar.jpg",
+        options: [
+          { id: "enable2FA", text: "Ativar autenticação de dois fatores", next: "t_ignore4", points: 2 },
+          { id: "backupData", text: "Realizar backup dos seus dados", next: "t_endBetterIgnore", points: 2 },
+          { id: "doNothing", text: "Confiar que está seguro", next: "t_endModerateIgnore", points: 1 }
+        ]
+      },
+      "t_ignore4": {
+        text: "Com o 2FA ativo, você bloqueia uma tentativa de login. Sua conta parece mais segura, mas um email, aparentemente do TikTok, pede para desativar o 2FA para 'verificação de sistema'. O email parece oficial. Sua conta está mais protegida.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "t_ignore_support": {
+        text: "Pesquisando online, você descobre que o perfil era parte de um golpe sofisticado no TikTok. Suas ações iniciais ajudaram, mas você precisa manter a vigilância e adotar práticas de segurança adicionais.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "t_endIgnore": {
+        text: "Ignorar as notificações permitiu que os golpistas continuassem tentando acessar sua conta, eventualmente postando vídeos fraudulentos. Sempre verifique notificações de segurança, mesmo que pareçam incômodas.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "t_endIgnore2": {
+        text: "Ignorar os alertas resultou na invasão da sua conta. Os golpistas usaram seu perfil para promover golpes. Verifique sempre atividades suspeitas para proteger sua conta.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "t_endBetterIgnore": {
+        text: "Fazer backup dos seus dados e alterar a senha protegeu sua conta contra o golpe. Continue mantendo backups e o 2FA ativo para garantir segurança a longo prazo.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "t_endModerateIgnore": {
+        text: "Alterar a senha ajudou, mas sem o 2FA, sua conta permanece vulnerável a futuras tentativas de invasão. Ative a autenticação de dois fatores para maior proteção.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "t_click1": {
+        text: "Clicar no link levou a uma página que imita o login do TikTok, solicitando sua senha e código de verificação. Os golpistas roubaram suas credenciais. Sempre verifique a autenticidade de links antes de clicar.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "t_click2": {
+        text: "Reiniciar o dispositivo não resolveu o problema. Após clicar no link, os golpistas já comprometeram sua conta, postando vídeos fraudulentos. Nunca clique em links suspeitos.",
+        image: "assets/images/bad_end.jpg",
+        options: []
+      },
+      "t_click3": {
+        text: "O antivírus detectou ameaças após você clicar no link, mas os golpistas já acessaram sua conta parcialmente. Você limitou o dano, mas a conta ainda está em risco.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "t_click4": {
+        text: "Desconectar da internet interrompeu a comunicação com os golpistas, mas eles já obtiveram algumas informações após o clique no link. Sua conta precisa de mais proteção.",
+        image: "assets/images/medium_end.jpg",
+        options: []
+      },
+      "t_verify1": {
+        text: "Ao verificar o perfil, você nota que, apesar de muitos seguidores, ele tem comentários genéricos e um nome de usuário com números estranhos (ex.: 'TikTokOficial123'). Um amigo seu curtiu um vídeo desse perfil. Como proceder?",
+        image: "assets/images/imagem_tiktokperfil.jpg",
+        options: [
+          { id: "reportAndBlock", text: "Reportar e bloquear o perfil", next: "t_verify2", points: 2 },
+          { id: "checkSettings", text: "Verificar configurações de segurança da conta", next: "t_verify3", points: 1 },
+          { id: "ignore", text: "Ignorar a mensagem", next: "t_endIgnore", points: 0 }
+        ]
+      },
+      "t_verify2": {
+        text: "Reportar e bloquear o perfil evitou o golpe. Sua conta permanece segura, mas continue verificando perfis e notificações para evitar futuras ameaças.",
+        image: "assets/images/good_end.jpg",
+        options: []
+      },
+      "t_verify3": {
+        text: "Você reforça as configurações de segurança, mas recebe outra DM de um perfil similar, agora com um vídeo mencionando seu nome e um link para 'completar a parceria'. O perfil parece popular. O que fazer?",
+        image: "assets/images/imagem_ativar.jpg",
+        options: [
+          { id: "enable2FA", text: "Ativar autenticação de dois fatores", next: "t_ignore4", points: 2 },
+          { id: "consultExpert", text: "Consultar dicas online", next: "t_ignore_support", points: 1 },
+          { id: "doNothing", text: "Confiar nas medidas tomadas", next: "t_endModerateIgnore", points: 1 }
+        ]
+      }
+    };
+
+    function menuItemClick(storyKey) {
+      if (menuClickSound) menuClickSound.play();
+      startStory(storyKey);
+    }
+
+    function startStory(storyKey) {
+      cumulativeScore = 0;
+      currentPart = "start";
+      if (storyKey === "story1") {
+        currentStoryParts = emailStoryParts;
+      } else if (storyKey === "story2") {
+        currentStoryParts = instagramStoryParts;
+      } else if (storyKey === "story3") {
+        currentStoryParts = tiktokStoryParts;
+      } else {
+        console.warn('', storyKey);
+        return;
+      }
+      document.getElementById("menu-container").style.display = "none";
+      document.getElementById("scenario-container").style.display = "block";
+      document.body.style.backgroundImage = "url('assets/images/imageHD.jpg')"; 
+      loadPart();
+    }
+
+    function loadPart() {
+      const part = currentStoryParts[currentPart];
+      if (!part) {
+        console.warn('Parte do cenário não encontrada:', currentPart);
+        document.getElementById("scenario-description").innerHTML = "<p>Erro: Cenário não encontrado.</p>";
+        document.getElementById("image-container").innerHTML = "";
+        document.getElementById("options").innerHTML = "";
+        document.getElementById("restartBtn").style.display = "block";
+        return;
+      }
+      document.getElementById("scenario-description").innerHTML = `<p>${part.text}</p>`;
+      document.getElementById("image-container").innerHTML = part.image 
+        ? `<img src="${part.image}" alt="Imagem do cenário" onerror="this.src='assets/images/medium_end.jpg'">`
+        : "";
+
+      if (part.image === "assets/images/bad_end.jpg") {
+        document.body.style.backgroundImage = "url('assets/images/image2.jpg')";
+      } else if (part.image === "assets/images/good_end.jpg") {
+        document.body.style.backgroundImage = "url('assets/images/image3.jpg')";
+      } else {
+        document.body.style.backgroundImage = "url('assets/images/imageHD.jpg')";
+      }
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      if (part.options.length === 0) {
+        document.getElementById("restartBtn").style.display = "block";
+      } else {
+        document.getElementById("restartBtn").style.display = "none";
+        part.options.forEach(option => {
+          let btn = document.createElement("button");
+          btn.className = "option";
+          btn.innerText = option.text;
+          btn.setAttribute("aria-label", `Opção: ${option.text}`);
+          btn.addEventListener("click", function() {
+            if (clickSound) clickSound.play();
+            cumulativeScore += option.points;
+            currentPart = option.next;
+            loadPart();
+          });
+          optionsContainer.appendChild(btn);
+        });
+      }
+    }
+
+    function restartGame() {
+      if (clickSoundRestart) clickSoundRestart.play();
+      document.getElementById("scenario-container").style.display = "none";
+      document.getElementById("menu-container").style.display = "block";
+      document.getElementById("scenario-description").innerHTML = "";
+      document.body.style.backgroundImage = "url('assets/images/imageHD.jpg')"; 
+      cumulativeScore = 0;
+      currentPart = "";
+      currentStoryParts = {};
+    }
+  </script>
+</body>
+</html>
