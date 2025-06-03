@@ -170,7 +170,7 @@
 
 @media (max-height: 600px) {
   body {
-    background-color: aqua;
+    background-color: #000000;
     align-items: flex-start; 
     padding-top: 10px; 
   }
@@ -185,8 +185,8 @@
     margin: 10px auto;
     padding: 20px;
     padding-top: 20px; 
+    max-width: 85%;
   }
-
   #menu-container h1 {
     font-size: 1.3em;
     margin-bottom: 10px;
@@ -294,19 +294,17 @@
   }
   #menu-container {
     padding: 10px;
-    max-width: 95%;
-    margin: 10px auto;
-  }
-
-  #scenario-container {
-    padding: 15px;
-    max-width: 100%;
-    margin: 10px auto;
+    max-width: 80%;
   }
 
   #menu-container h1 {
     font-size: 1.2em;
     margin-bottom: 8px;
+  }
+
+  #scenario-container {
+    padding: 20px;
+    max-width: 95%;
   }
 
   .menu-icons {
@@ -329,18 +327,23 @@
 
   .option {
     flex: 1 1 100%;
-    font-size: 0.7em;
-    padding: 8px;
+    font-size: 0.8em;
+    padding: 12px;
+    background-color: #ffffffd3;
+  }
+
+  .option:hover {
+    background-color: #ffffffd3;
+    transform: translateY(0px);
   }
 
   #scenario-description p {
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin-bottom: 10px;
   }
 
   #restartBtn {
     font-size: 0.9em;
-    padding: 8px;
   }
 }
   </style>
