@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golpes em Redes Sociais</title>
+  <link rel="icon" type="image/png" href="/assets/icons/icon2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <link rel="stylesheet" href="/src/style.css">
+  <script src="/src/script.js" defer></script>
+</head>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="menu-container">
+    <h1>Selecione a Rede Social</h1>
+    <div class="menu-icons">
+      <div class="menu-item" onclick="menuItemClick('story1')" aria-label="Iniciar cenário de golpe por WhatsApp">
+        <img src="/assets/icons/whatsapp.png" alt="Golpe do WhatsApp">
+        <span>WhatsApp</span>
+      </div>
+      <div class="menu-item" onclick="menuItemClick('story2')" aria-label="Iniciar cenário de golpe por Instagram">
+        <img src="/assets/icons/instagram.png" alt="Golpe pelo Instagram">
+        <span>Instagram</span>
+      </div>
+      <div class="menu-item" onclick="menuItemClick('story3')" aria-label="Iniciar cenário de golpe por TikTok">
+        <img src="/assets/icons/tiktok.png" alt="Golpe por TikTok">
+        <span>TikTok</span>
+      </div>
+    </div>
+  </div>
+  <div id="scenario-container" style="display: none;">
+    <div id="score-display"></div>
+    <div id="scenario-description"></div>
+    <div id="feedback-message"></div>
+    <div id="image-container"></div>
+    <div id="options"></div>
+    <button id="restartBtn" style="display: none;" onclick="restartGame()" aria-label="Recomeçar o jogo">
+      <i class="fas fa-redo"></i> Recomeçar
+    </button>
+  </div>
+  <script>
+  </script>
+</body>
+</html>
